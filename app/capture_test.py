@@ -25,6 +25,7 @@ def draw_lines(img, lines):
 def process_img(original_image):
     processed_img = cv2.cvtColor(original_image, cv2.COLOR_BGR2GRAY)
     processed_img = cv2.Canny(processed_img, threshold1 = 100 , threshold2 = 200)
+    processed_img = cv2.GaussianBlur(processed_img, (5,5), 0)
     vertices = np.array([[10, 500], [10, 300], [300, 200], [500,200], [800,300], [800,500]])
     processed_img = roi(processed_img,[vertices]) 
     # processed_img is edges
